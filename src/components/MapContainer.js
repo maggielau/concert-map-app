@@ -11,11 +11,9 @@ const MapContainer = ({ selected, onSelectedChange }) => {
   
   const mapStyles = {        
     height: "100vh",
-    width: "60vw"};
+    width: "60vw"
+  };
   
-  const defaultCenter = {
-    lat: 43.653908, lng: -79.384293
-  }
   
   return (
      <LoadScript
@@ -23,14 +21,25 @@ const MapContainer = ({ selected, onSelectedChange }) => {
         <GoogleMap
           mapContainerStyle={mapStyles}
           zoom={13}
-          center={defaultCenter}
+          clickableIcons={false}
+          center={selected.position}
         >
         {
             locations.map(item => {
                 return (
-                    <Marker key={item.id} 
+                    <Marker 
+                        key={item.id} 
                         position={item.position}
                         onClick={() => onSelect(item)}
+                        icon={{
+                          path:
+                            "M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z",
+                          fillColor: "yellow",
+                          fillOpacity: 0.9,
+                          scale: 1,
+                          strokeColor: "red",
+                          strokeWeight: 2,
+                        }}
                     />
                 );
             })

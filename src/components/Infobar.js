@@ -1,8 +1,13 @@
 import React from "react";
 import locations from '../locations-data'
-import VideoSearch from "./ArtistContainer";
 
 const VenueInfo = ({item, onSelectedArtistChange}) => {
+  
+  function openModal() {
+    var modal = document.getElementById("video-modal");
+    modal.style.display = "block";
+}
+
   return (
     <div className="venue-details">
       <h3>Artists:</h3>
@@ -10,7 +15,7 @@ const VenueInfo = ({item, onSelectedArtistChange}) => {
         {
           item.artists.map(artist => {
             return (
-              <li onClick={() => onSelectedArtistChange(artist)}>
+              <li key={artist} onClick={() => {onSelectedArtistChange(artist); openModal();}}>
                 {artist}
               </li>
             );

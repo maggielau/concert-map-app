@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import React, { Component } from "react";
 import axios from 'axios';
 
 
@@ -57,11 +56,17 @@ const VideoDisplay = ({term}) => {
     setSearch(term);
     }
 
+    function closeModal() {
+        var modal = document.getElementById("video-modal");
+        modal.style.display = "none";
+    }
+
     return(
-        <div>
+        <div class="modal-content">
+            <span class="modal-close" onClick={() => closeModal()}>&times;</span>
             <p>Selected Artist: {term}</p>
             <p>
-                <iframe title="deezer-widget" src={track} width="100%" height="300" frameborder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>
+                <iframe title="deezer-widget" src={track} width="100%" height="300" frameBorder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>
             </p>
             <p>
                 <button onClick={() => showNextTrack()}>Next Track</button>

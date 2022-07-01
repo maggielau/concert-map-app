@@ -7,7 +7,7 @@ import { useState } from 'react';
 function App() {
 
   // Selected Venue
-  const [ selected, setSelected ] = useState({});
+  const [ selected, setSelected ] = useState({position: {lat: 43.653908, lng: -79.384293}});
   // Selected Artist for video search
   const [ selectedArtist, setSelectedArtist ] = useState("mear");
 
@@ -19,7 +19,7 @@ function App() {
       <div className="map-container">
         <MapContainer selected={selected} onSelectedChange={setSelected} />
       </div>
-      <div className="video-modal">
+      <div className="video-modal" id="video-modal">
         <VideoDisplay term={selectedArtist}/>
       </div>
     </div>
