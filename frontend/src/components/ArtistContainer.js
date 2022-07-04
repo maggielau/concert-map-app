@@ -62,8 +62,8 @@ const VideoDisplay = ({term}) => {
     }
 
     return(
-        <div class="modal-content">
-            <span class="modal-close" onClick={() => closeModal()}>&times;</span>
+        <div className="modal-content">
+            <span className="modal-close" onClick={() => closeModal()}>&times;</span>
             <p>Selected Artist: {term}</p>
             <p>
                 <iframe title="deezer-widget" src={track} width="100%" height="300" frameBorder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>
