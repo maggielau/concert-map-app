@@ -1,11 +1,16 @@
 var express = require('express');
 var axios = require('axios');
 var router = express.Router();
+var path = require('path');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// /* GET home page. */
+// router.get('/', function(req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
+
+// Have Node serve the files for our built React app
+router.use(express.static(path.resolve(__dirname, '../frontend/build')));
+
 
 //Test API
 router.get("/api", (req, res) => {
@@ -32,6 +37,11 @@ router.get("/artist", (req, res) => {
       res.status(500).json({message: err});
     });
 
+});
+
+// All other GET requests not handled before will return our React app
+router.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
 });
 
 

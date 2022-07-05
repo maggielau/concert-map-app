@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "build": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -17,5 +18,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.18"
+  },
+  "engines": {
+    "node": "16.13.2"
   }
 }
