@@ -35,6 +35,7 @@ const Infobar = ({ selected, onSelectedChange, onSelectedArtistChange }) => {
     const onSelect = item => {
         onSelectedChange(item);
       }
+
     
     return (
         <div className="infobar-content">

@@ -16,7 +16,8 @@ const VideoDisplay = ({term}) => {
     function videoSearch(term) {
 
         axios({
-            url: `https://api.deezer.com/search?q=artist:"${term}"`,
+            // url: `https://api.deezer.com/search?q=artist:"${term}"`,
+            url: `artist?term=${term}`
         })
             .then(res => {
                 console.log("Axios Call completed: ")
