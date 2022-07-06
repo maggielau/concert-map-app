@@ -23,9 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //cors setup
 app.use(cors());
-const corsOptions = {
-    origin: "http://localhost:3000"
-};
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
