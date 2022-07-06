@@ -44,8 +44,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(process.env.PORT || 3001, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+// const port = process.env.PORT || 3001;
+// app.listen(port, () => {
+//   console.log(`Server started on port ${port}`);
+// });
 
 module.exports = app;
