@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import locations from '../locations-data'
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker, InfoWindow, useGoogleMap } from '@react-google-maps/api';
 
 const MapContainer = ({ selected, onSelectedChange }) => {
 
@@ -13,6 +13,8 @@ const MapContainer = ({ selected, onSelectedChange }) => {
     height: "100vh",
     width: "60vw"
   };
+
+  const defaultCenter = {lat: 43.653908, lng: -79.384293};
   
   
   return (
@@ -22,7 +24,7 @@ const MapContainer = ({ selected, onSelectedChange }) => {
           mapContainerStyle={mapStyles}
           zoom={13}
           clickableIcons={false}
-          center={selected.position}
+          center={defaultCenter}
         >
         {
             locations.map(item => {
