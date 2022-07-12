@@ -10,6 +10,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 const cors = require('cors');
+require('dotenv').config();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
