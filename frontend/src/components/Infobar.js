@@ -39,6 +39,8 @@ const Infobar = ({ selected, onSelectedChange, onSelectedArtistChange }) => {
     
     return (
         <div className="infobar-content">
+          <label for="eventDate">Select your date:</label>
+          <input type="date" id="eventDate" className="date-select"></input>
             {
                 locations.map(item => {
                     return (

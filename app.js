@@ -12,6 +12,14 @@ var app = express();
 const cors = require('cors');
 require('dotenv').config();
 
+//setting up mongoose connection
+const mongoose = require('mongoose');
+let mongoDB = `mongodb+srv://maggie:maggietest@cluster0.m0vgl.mongodb.net/eventsData?retryWrites=true&w=majority`
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true});
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
