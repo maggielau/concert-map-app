@@ -12,7 +12,7 @@ let EventSchema = new Schema({
         artists: [{type: String, required: true}],
         doors: {type: String},
         cost: {type: String},
-        purchaseURL: {type: String}
-});
+        purchaseURL: {type: String},
+}, { _id: false });
 
 module.exports = mongoose.model('Event', EventSchema);
