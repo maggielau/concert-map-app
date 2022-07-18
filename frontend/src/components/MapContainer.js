@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import locations from '../locations-data'
 import { GoogleMap, LoadScript, Marker, InfoWindow, useGoogleMap } from '@react-google-maps/api';
 
-const MapContainer = ({ selected, onSelectedChange }) => {
+const MapContainer = ({ selected, onSelectedChange, dateEvents }) => {
 
 
   const onSelect = item => {
@@ -27,7 +26,7 @@ const MapContainer = ({ selected, onSelectedChange }) => {
           center={defaultCenter}
         >
         {
-            locations.map(item => {
+            dateEvents.map(item => {
                 return (
                     <Marker 
                         key={item._id} 

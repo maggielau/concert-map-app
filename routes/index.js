@@ -22,6 +22,9 @@ router.get("/artist", event_controller.deezer_req);
 //Request to Ticketmaster API to get concert listings for a date
 router.get("/concerts", event_controller.tm_data);
 
+//Fetch event data from database for query date
+router.get("/events", event_controller.event_data_by_date)
+
 
 // All other GET requests not handled before will return our React app
 router.get('*', (req, res) => {

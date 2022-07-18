@@ -1,5 +1,4 @@
 import React from "react";
-import locations from '../locations-data'
 
 const VenueInfo = ({item, onSelectedArtistChange}) => {
   
@@ -30,19 +29,24 @@ const VenueInfo = ({item, onSelectedArtistChange}) => {
 }
 
 
-const Infobar = ({ selected, onSelectedChange, onSelectedArtistChange }) => {
+const Infobar = ({ selected, onSelectedChange, onSelectedArtistChange, selectedDate, onSelectedDateChange, dateEvents }) => {
 
     const onSelect = item => {
         onSelectedChange(item);
       }
+    
+    const onSelectDate= function() {
+      let eventDate = document.getElementById("eventDate");
+      onSelectedDateChange(eventDate.value);
+    }
 
     
     return (
         <div className="infobar-content">
-          <label for="eventDate">Select your date:</label>
-          <input type="date" id="eventDate" className="date-select"></input>
+          <label htmlFor="eventDate">Select your date:</label>
+          <input type="date" id="eventDate" className="date-select" value={selectedDate} onChange={() => onSelectDate()}></input>
             {
-                locations.map(item => {
+                dateEvents.map(item => {
                     return (
                         <div className="venue-info" key={item._id}>
                             <h2 onClick={() => onSelect(item)} >{item.venueName}</h2>

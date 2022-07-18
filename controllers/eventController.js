@@ -25,8 +25,22 @@ exports.tm_data = function (req, res) {
     url
   );
 
-  res.status(200).json("Pulling TM Data");
+  res.status(200).json("Pulling TM Data from: " + url);
 };
+
+//Export JSON of all events for a particular date
+exports.event_data_by_date = function (req, res, next) {
+
+  //read date query paramater
+  let reqDate = req.query["date"];
+
+  Event.find({date: reqDate})
+    .sort({venueName: 1})
+    .exec(function (err, event_data) {
+      if (err) { return next(err); }
+      res.send(event_data);
+    });
+}
 
 //Request to Deezer API to get event artist tracks for music preview
 exports.deezer_req = function (req, res) {

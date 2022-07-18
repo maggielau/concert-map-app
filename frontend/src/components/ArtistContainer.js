@@ -16,14 +16,10 @@ const VideoDisplay = ({term}) => {
     function videoSearch(term) {
 
         axios({
-            // url: `https://api.deezer.com/search?q=artist:"${term}"`,
             url: `artist?term=${term}`
         })
             .then(res => {
-                console.log("Axios Call completed: ")
                 videoList = res.data.data;
-                console.log(videoList);
-                console.log(videoList[0].artist.name);
                 if (videoList[0].artist.name != term) {
                     videoList.shift();
                 }
