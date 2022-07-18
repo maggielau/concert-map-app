@@ -44,9 +44,9 @@ const Infobar = ({ selected, onSelectedChange, onSelectedArtistChange }) => {
             {
                 locations.map(item => {
                     return (
-                        <div className="venue-info" key={item.id}>
-                            <h2 onClick={() => onSelect(item)} >{item.markerName}</h2>
-                            {(selected.id === item.id) ? <VenueInfo item={item} onSelectedArtistChange={onSelectedArtistChange}/> : null}
+                        <div className="venue-info" key={item._id}>
+                            <h2 onClick={() => onSelect(item)} >{item.venueName}</h2>
+                            {(selected._id === item._id) ? <VenueInfo item={item} onSelectedArtistChange={onSelectedArtistChange}/> : null}
                         </div>
                     );
                 })

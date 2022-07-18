@@ -30,7 +30,7 @@ const MapContainer = ({ selected, onSelectedChange }) => {
             locations.map(item => {
                 return (
                     <Marker 
-                        key={item.id} 
+                        key={item._id} 
                         position={item.position}
                         onClick={() => onSelect(item)}
                         icon={{
@@ -54,7 +54,7 @@ const MapContainer = ({ selected, onSelectedChange }) => {
                     clickable={true} 
                     onCloseClick={() => onSelectedChange({})}
                 >
-                    <p>{selected.markerName}</p>
+                    <p>{selected.venueName}</p>
                 </InfoWindow>
             )
         }
