@@ -34,11 +34,11 @@ const MapContainer = ({ selected, onSelectedChange, dateEvents }) => {
                         onClick={() => onSelect(item)}
                         icon={{
                           path:
-                            "M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z",
-                          fillColor: "yellow",
+                            "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z",
+                          fillColor: "#f859de",
                           fillOpacity: 0.9,
-                          scale: 1,
-                          strokeColor: "red",
+                          scale: 2,
+                          strokeColor: "#12232E",
                           strokeWeight: 2,
                         }}
                     />
@@ -53,7 +53,7 @@ const MapContainer = ({ selected, onSelectedChange, dateEvents }) => {
                     clickable={true} 
                     onCloseClick={() => onSelectedChange({})}
                 >
-                    <p>{selected.venueName}</p>
+                    <h3>{selected.venueName}</h3>
                 </InfoWindow>
             )
         }

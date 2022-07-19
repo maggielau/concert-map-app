@@ -80,18 +80,20 @@ const VideoDisplay = ({term}) => {
     return(
         <div className="modal-content">
             <span className="modal-close" onClick={() => closeModal()}>&times;</span>
-            <p>Selected Artist: {term}</p>
-            <p>
-            {(track === 0) ? <h2>Sorry, could not find artist</h2> :
-                <div>
-                    <iframe title="deezer-widget" src={track} width="100%" height="300" frameBorder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>
-                    <p>
-                        <button onClick={() => showPrevTrack()}>Previous Track</button>
-                        <button onClick={() => showNextTrack()}>Next Track</button>
-                    </p>
-                </div>
-            }
-            </p>
+            <div className="modal-inner">
+                <h2>{term}</h2>
+                <p>
+                    {(track === 0) ? <h3>Sorry, could not find artist</h3> :
+                        <div>
+                            <iframe title="deezer-widget" src={track} width="100%" height="300" frameBorder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>
+                            <div className="track-buttons">
+                                <button onClick={() => showPrevTrack()}>Prev Song</button>
+                                <button onClick={() => showNextTrack()}>Next Song</button>
+                            </div>
+                        </div>
+                    }
+                </p>
+            </div>
         </div>
     );
 }

@@ -43,9 +43,15 @@ const Infobar = ({ selected, onSelectedChange, onSelectedArtistChange, selectedD
     
     return (
         <div className="infobar-content">
-          <label htmlFor="eventDate">Select your date:</label>
-          <input type="date" id="eventDate" className="date-select" value={selectedDate} onChange={() => onSelectDate()}></input>
-            
+          <h1>TO.Music-Mapper</h1>
+          <p>Welcome! This tool helps you discover new live music in Toronto. 
+            Select the date you'll be in town, check out where the shows are, 
+            and preview music from the artists and bands performing!</p>
+          <div className="event-date">
+            <label htmlFor="eventDate">Select your date: </label>
+            <input type="date" id="eventDate" className="date-select" value={selectedDate} onChange={() => onSelectDate()}></input>
+          </div>
+
             {(dateEvents.length === 0) ? <h3>Sorry, no events available for this date.</h3> :
               
               dateEvents.map(item => {
