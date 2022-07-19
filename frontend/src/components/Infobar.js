@@ -45,15 +45,18 @@ const Infobar = ({ selected, onSelectedChange, onSelectedArtistChange, selectedD
         <div className="infobar-content">
           <label htmlFor="eventDate">Select your date:</label>
           <input type="date" id="eventDate" className="date-select" value={selectedDate} onChange={() => onSelectDate()}></input>
-            {
-                dateEvents.map(item => {
-                    return (
-                        <div className="venue-info" key={item._id}>
-                            <h2 onClick={() => onSelect(item)} >{item.venueName}</h2>
-                            {(selected._id === item._id) ? <VenueInfo item={item} onSelectedArtistChange={onSelectedArtistChange}/> : null}
-                        </div>
-                    );
-                })
+            
+            {(dateEvents.length === 0) ? <h3>Sorry, no events available for this date.</h3> :
+              
+              dateEvents.map(item => {
+                  return (
+                      <div className="venue-info" key={item._id}>
+                          <h2 onClick={() => onSelect(item)} >{item.venueName}</h2>
+                          {(selected._id === item._id) ? <VenueInfo item={item} onSelectedArtistChange={onSelectedArtistChange}/> : null}
+                      </div>
+                  );
+              })
+              
             }
         </div>
     );

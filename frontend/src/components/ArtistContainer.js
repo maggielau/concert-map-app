@@ -19,28 +19,47 @@ const VideoDisplay = ({term}) => {
             url: `artist?term=${term}`
         })
             .then(res => {
-                videoList = res.data.data;
-                if (videoList[0].artist.name != term) {
-                    videoList.shift();
+                //If Deezer API cannot find the artist
+                if (res.data.total === 0) {
+                    setTrack(0);
                 }
-                setTrack(`https://widget.deezer.com/widget/dark/track/${videoList[0].id}`);
+                else {
+                    videoList = res.data.data;
+                    while (videoList[0].artist.name.toUpperCase() !== term.toUpperCase()) {
+                        videoList.shift();
+                        if (videoList.length === 0) break;
+                    }
+                    //If Deezer API results do not match the artist
+                    if (videoList.length === 0) {
+                        setTrack(0);
+                    }
+                    else {
+                        setTrack(`https://widget.deezer.com/widget/dark/track/${videoList[0].id}`);
+                    }
+                }
             })
     }
 
     function showNextTrack() {
         videoListIndex++;
-        while ((videoList[videoListIndex].artist.name.toUpperCase() !== search.toUpperCase()) && (videoListIndex < videoList.length-1)) {
-            console.log("artist name didn't match");
-            console.log(videoList[0].artist.name);
-            console.log(search);
-            videoListIndex++;
-        }
         if (videoListIndex > videoList.length-1) {
             videoListIndex = 0;
         }
+        while ((videoList[videoListIndex].artist.name.toUpperCase() !== search.toUpperCase()) && (videoListIndex < videoList.length-1)) {
+            videoListIndex++;
+        }
         setTrack(`https://widget.deezer.com/widget/dark/track/${videoList[videoListIndex].id}`)
-        console.log(videoListIndex);
+    }
 
+    function showPrevTrack() {
+        videoListIndex--;
+        if (videoListIndex === -1) {
+            videoListIndex = (videoList.length) -1;
+        }
+        while ((videoList[videoListIndex].artist.name.toUpperCase() !== search.toUpperCase()) && (videoListIndex < videoList.length-1)) {
+            videoListIndex--;
+        }
+        setTrack(`https://widget.deezer.com/widget/dark/track/${videoList[videoListIndex].id}`)
     }
 
 
@@ -63,10 +82,15 @@ const VideoDisplay = ({term}) => {
             <span className="modal-close" onClick={() => closeModal()}>&times;</span>
             <p>Selected Artist: {term}</p>
             <p>
-                <iframe title="deezer-widget" src={track} width="100%" height="300" frameBorder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>
-            </p>
-            <p>
-                <button onClick={() => showNextTrack()}>Next Track</button>
+            {(track === 0) ? <h2>Sorry, could not find artist</h2> :
+                <div>
+                    <iframe title="deezer-widget" src={track} width="100%" height="300" frameBorder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>
+                    <p>
+                        <button onClick={() => showPrevTrack()}>Previous Track</button>
+                        <button onClick={() => showNextTrack()}>Next Track</button>
+                    </p>
+                </div>
+            }
             </p>
         </div>
     );
