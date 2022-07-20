@@ -1,4 +1,6 @@
 import React from "react";
+import logo from '../images/logo1.png';
+import githubLogo from '../images/github-logo.png';
 
 const VenueInfo = ({item, onSelectedArtistChange}) => {
   
@@ -43,12 +45,13 @@ const Infobar = ({ selected, onSelectedChange, onSelectedArtistChange, selectedD
     
     return (
         <div className="infobar-content">
+          <img src={logo} alt="Logo" />
           <h1>TO.Music-Mapper</h1>
           <p>Welcome! This tool helps you discover new live music in Toronto. 
             Select the date you'll be in town, check out where the shows are, 
             and preview music from the artists and bands performing!</p>
           <div className="event-date">
-            <label htmlFor="eventDate">Select your date: </label>
+            <label htmlFor="eventDate">Select a date: </label>
             <input type="date" id="eventDate" className="date-select" value={selectedDate} onChange={() => onSelectDate()}></input>
           </div>
 
@@ -64,6 +67,9 @@ const Infobar = ({ selected, onSelectedChange, onSelectedArtistChange, selectedD
               })
               
             }
+            <div className="github-link">
+              <a href="https://github.com/maggielau" target="_blank"><img src={githubLogo} alt="Github" /></a>
+            </div>
         </div>
     );
 

@@ -30,11 +30,12 @@ ul {
 .infobar {
     width: 40vw;
     height: 100vh;
-    background-color: var(--lightest-blue);
     color: #000;
     padding: 40px;
     text-align: justify;
     overflow-y: scroll;
+    background: var(--lightest-blue);
+    background: linear-gradient(0deg, rgba(105,191,238,1) 85%, rgba(0,80,146,.7) 100%);
 }
 
 .infobar::-webkit-scrollbar {
@@ -60,8 +61,19 @@ ul {
     color: var(--accent);
     font-size: clamp(20px, 2vw, 36px);
     text-shadow: 2px 4px 3px rgba(0,0,0,0.4);
-    margin: 50px 0 30px;
+    margin: 15px 0 30px;
     font-family: 'Press Start 2P', cursive;
+    text-align: center;
+}
+
+.infobar-content img {
+    width: 30%;
+}
+
+.github-link {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
 }
 
 .venue-info{
