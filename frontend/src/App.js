@@ -16,7 +16,7 @@ function App() {
   // Selected Venue
   const [ selected, setSelected ] = useState({position: {lat: 43.653908, lng: -79.384293}});
   // Selected Artist for video search
-  const [ selectedArtist, setSelectedArtist ] = useState("mear");
+  const [ selectedArtist, setSelectedArtist ] = useState("");
   //Selected Date
   const [ selectedDate, setSelectedDate ] = useState(formatDate(new Date()));
   //Event info for selected date
@@ -24,7 +24,6 @@ function App() {
 
   useEffect(() => {
     fetchEvents(selectedDate);
-    console.log(dateEvents);
   }, [selectedDate])
 
   //Get events from database whenever date is changed
@@ -33,7 +32,6 @@ function App() {
       .then((res)=>res.json())
       .then((json)=> {
           setDateEvents(json);
-          console.log(json);
         })
       .catch(error => {
       console.log("Fetch API Error: " + error);

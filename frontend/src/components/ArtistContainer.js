@@ -82,7 +82,7 @@ const VideoDisplay = ({term}) => {
             <span className="modal-close" onClick={() => closeModal()}>&times;</span>
             <div className="modal-inner">
                 <h2>{term}</h2>
-                <p>
+                <div>
                     {(track === 0) ? <h3>Sorry, could not find artist</h3> :
                         <div>
                             <iframe title="deezer-widget" src={track} width="100%" height="300" frameBorder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>
@@ -92,7 +92,7 @@ const VideoDisplay = ({term}) => {
                             </div>
                         </div>
                     }
-                </p>
+                </div>
             </div>
         </div>
     );
