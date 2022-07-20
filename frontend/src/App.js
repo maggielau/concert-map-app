@@ -47,7 +47,7 @@ function App() {
         <MapContainer selected={selected} onSelectedChange={setSelected} dateEvents={dateEvents}/>
       </div>
       <div className="video-modal" id="video-modal">
-        <VideoDisplay term={selectedArtist}/>
+        <VideoDisplay term={selectedArtist} onSelectedArtistChange={setSelectedArtist} />
       </div>
     </div>
   );

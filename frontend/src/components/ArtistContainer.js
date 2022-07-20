@@ -6,7 +6,7 @@ let videoList=[];
 let videoListIndex = 1;
 
 
-const VideoDisplay = ({term}) => {
+const VideoDisplay = ({term, onSelectedArtistChange}) => {
 
 
 
@@ -62,6 +62,11 @@ const VideoDisplay = ({term}) => {
         setTrack(`https://widget.deezer.com/widget/dark/track/${videoList[videoListIndex].id}`)
     }
 
+    //When user closes the song preview modal, change artist to blank to stop playback
+    function stopPlayer() {
+        onSelectedArtistChange("");
+    }
+
 
     useEffect(() => {
         videoListIndex = 0;
@@ -75,6 +80,7 @@ const VideoDisplay = ({term}) => {
     function closeModal() {
         var modal = document.getElementById("video-modal");
         modal.style.display = "none";
+        stopPlayer();
     }
 
     return(
