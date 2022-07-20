@@ -14,7 +14,7 @@ require('dotenv').config();
 
 //setting up mongoose connection
 const mongoose = require('mongoose');
-let mongoDB = `mongodb+srv://maggie:maggietest@cluster0.m0vgl.mongodb.net/eventsData?retryWrites=true&w=majority`
+let mongoDB = `mongodb+srv://maggie:${process.env.MONGO_PASS}@cluster0.m0vgl.mongodb.net/eventsData?retryWrites=true&w=majority`
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true});
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
